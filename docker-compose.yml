@@ -1,31 +1,31 @@
 services:
-    postgres:
-        image: postgres
+    mysql:
+        image: mysql
         restart: always
-        environment: 
-          - POSTGRES_USER=postgres
-          - POSTGRES_PASSWORD=postgres
-          - PGDATA=tmp
-        logging:
-          options:
-            max-size: 10m
-            max-file: "3"
+        environment:
+          MYSQL_DATABASE: 'db'
+          # So you don't have to use root, but you can if you like
+          MYSQL_USER: 'user'
+          # You can use whatever password you like
+          MYSQL_PASSWORD: 'password'
+          # Password for root access
+          MYSQL_ROOT_PASSWORD: 'password'
         ports:
-          - '5438:5432'
+          - 3306:3306
         volumes:
-          - ./postgres-data:/var/lib/postgresql/data
+          - ./my-db:/var/lib/mysql
           # copy the sql script to create tables
           - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
-          # copy the sql script to fill tables
-          - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
     iris:
-      build: 
+      build:
         context: .
         dockerfile: Dockerfile
       restart: always
-      command: --ISCAgent false
+      environment:
+        - ISC_CPF_MERGE_FILE=/home/irisowner/dev/merge.cpf
       ports:
         - 41773:1972
         - 42773:52773
       volumes:
-        - ./:/irisrun/repo
+        - ./:/home/irisowner/dev
+        - ./jdbc:/opt/irisbuild/jdbc
