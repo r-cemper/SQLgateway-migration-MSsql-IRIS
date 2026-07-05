@@ -95,3 +95,4 @@ All migration actions can be executed directly from SMP.
 
 
   [Article on DC](https://community.intersystems.com/post/sqlgateway-migration-MSsql-iris)
+  [Data source description by Yuri Marx](https://community.intersystems.com/post/data-migration-tool-part-iv-microsoft-sql-server-iris)
