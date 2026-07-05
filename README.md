@@ -94,5 +94,5 @@ All migration actions can be executed directly from SMP.
 9. A look into the related generated Class Definitions confirms the result and successful completion.
 
 
-  [Article on DC](https://community.intersystems.com/post/sqlgateway-migration-MSsql-iris)
+  [Article on DC](https://community.intersystems.com/post/sqlgateway-migration-MSsql-iris)    
   [Data source description by Yuri Marx](https://community.intersystems.com/post/data-migration-tool-part-iv-microsoft-sql-server-iris)
